@@ -28,21 +28,18 @@ int[,] GetNewArray(int m, int n)
     return array1;
 }
 
-void SumColumn(int[,] array1, int column)
+void SumColumn(int[,] array1, int row, int column)
 {
 
-    if (column < 0 | column > array1.GetLength(1) - 1)
-    {
-        Console.WriteLine("Такого столбца в массиве нет!");
-    }
-    else
-    {
-        double sum = 0;
-        for (int i = 0; i < array1.GetLength(0); i++)
+    
+        
+        for (int j = 0; j < array1.GetLength(1); j++)
+    { double sum = 0;
+        for (int i=0; i < array1.GetLength(0);i++)
         {
-            sum += array1[i, column];
+            sum += array1[i,j];
         }
-        Console.WriteLine($"Среднее арифметическое столбца {column} равно {Math.Round(sum / array1.GetLength(0)),2}");
+        Console.WriteLine($"Среднее арифметическое столбца {j} равно {Math.Round(sum / array1.GetLength(0),2)}");
 
     }
 }
@@ -51,5 +48,6 @@ int a = Prompt("Введите количество строк массива");
 int b = Prompt("Введите количество столбцов массива");
 Console.WriteLine();
 int[,] array = GetNewArray(a, b);
-int column = Prompt("Введите номер столбца");
-SumColumn(array, column);
+int column = b;
+int row = a;
+SumColumn(array, a,b);
